@@ -1,0 +1,17 @@
+.env
+test.py
+debug.py
+
+*.db
+*.log
+*.pyc
+*.json
+*.spec
+*.session
+
+env/
+dist/
+venv/
+.idea/
+build/
+__pycache__/

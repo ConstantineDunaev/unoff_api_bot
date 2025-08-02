@@ -1,6 +1,7 @@
 from mysql import Connection
 from schemas.market import Market
 from typing import List
+from json import loads, dumps
 
 
 class MarketRepository:
@@ -17,8 +18,8 @@ class MarketRepository:
             for row in rows:
                 result.append(Market(market_id=row[0],
                                      name=row[1],
-                                     headers=row[2],
-                                     cookies=row[3],
+                                     headers=loads(row[2]),
+                                     cookies=loads(row[3]),
                                      is_active=row[4],
                                      updatet_at=row[5]))
         return result

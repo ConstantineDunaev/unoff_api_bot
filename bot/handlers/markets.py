@@ -2,7 +2,7 @@ from aiogram import Router, F
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, CallbackQuery
 from bot.filters import IsAdmin, StateFilter
-from bot.resources import Buttons, Texts
+from resources import Buttons, Texts
 from bot.keyboards.reply import get_markets_keyboard, get_back_keyboard
 from bot.keyboards.inline import get_market_control_keyboard
 from bot.states import InputState

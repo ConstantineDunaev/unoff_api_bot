@@ -1,6 +1,6 @@
-from aiogram.utils.keyboard import InlineKeyboardBuilder, InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.utils.keyboard import InlineKeyboardBuilder, InlineKeyboardMarkup
 from schemas.market import Market
-from bot.resources import Buttons
+from resources import Buttons
 from bot.callback_factory import MarketControl
 from enums import MarketAction
 

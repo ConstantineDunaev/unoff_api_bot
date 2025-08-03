@@ -1,5 +1,5 @@
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
-from bot.resources import Buttons
+from resources import Buttons
 
 
 def get_main_keyboard():

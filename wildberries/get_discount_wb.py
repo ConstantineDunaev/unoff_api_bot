@@ -2,6 +2,7 @@ from aiohttp import ClientSession
 from json import dumps
 from typing import List
 from schemas.discount_wb import DiscountWB
+from resources import Texts
 
 
 async def get_discount_wb(headers: dict, cookies: dict) -> List[DiscountWB]:
@@ -24,6 +25,9 @@ async def get_discount_wb(headers: dict, cookies: dict) -> List[DiscountWB]:
             data["offset"] = offset
             response = await session.post(url=url,
                                           data=dumps(data))
+            if response.status == 401:
+                raise RuntimeError(Texts.error_401)
+
             data = await response.json()
             goods = data['data']['listGoods']
             for good in goods:

@@ -10,7 +10,7 @@ class Texts:
                          "2. Нажать клавишу <b>F12</b> - в браузере откроется окно <b>DevTools</b>\n"
                          "3. Перейти на вкладку <b>Network</b>\n"
                          "4. Обновить страницу\n"
-                         "5. Вставить в строку поиска Filter `goods/filter` - должна найтись одна запись\n"
+                         "5. Вставить в строку поиска Filter <code>>goods/filter</code> - должна найтись одна запись\n"
                          "6. Вызвать контекстное меню найденной записи, далее <b>Copy</b> -> <b>Copy as cURL (bash)</b>")
     market_view = ("<b>ID</b>: <code>{market_id}</code>\n"
                    "<b>Наименование</b>: <code>{name}</code>\n"

@@ -1,9 +1,7 @@
 from repositories.market import MarketRepository
 from db import Connection
 from typing import List
-from schemas.market import Market, NewMarket
-from utils.curl import parse_curl
-from datetime import datetime
+from schemas.market import Market, NewMarket, UpdateMarket, GetMarket
 
 
 async def get_markets(connection: Connection) -> List[Market]:
@@ -11,13 +9,17 @@ async def get_markets(connection: Connection) -> List[Market]:
     return await market_repo.get_markets()
 
 
-async def create_market(connection: Connection, name: str, curl: str) -> Market:
-    headers, cookies = parse_curl(curl)
-    new_market = NewMarket(name=name,
-                           headers=headers,
-                           cookies=cookies,
-                           is_active=True,
-                           updated_at=datetime.now())
+async def get_market(connection: Connection, get_market_: GetMarket) -> Market:
+    market_repo = MarketRepository(connection)
+    return await market_repo.get_market(get_market_)
+
+
+async def create_market(connection: Connection, new_market: NewMarket) -> Market:
     market_repo = MarketRepository(connection)
     return await market_repo.create_market(new_market)
+
+
+async def update_market(connection: Connection, upd_market: UpdateMarket) -> Market:
+    market_repo = MarketRepository(connection)
+    return await market_repo.update_market(upd_market)
 

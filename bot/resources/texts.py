@@ -5,6 +5,7 @@ class Texts:
     market_view = ("<b>ID</b>: <code>{market_id}</code>\n"
                    "<b>Наименование</b>: <code>{name}</code>\n"
                    "<b>Дата обновления</b>: <code>{updated_at}</code>\n\n")
-    added_market = "Магазин добавлен!"
+    added_market = "Магазин <code>{name}</code> добавлен!"
+    updated_market = "Cookies магазина <code>{name}</code> успешно обновлены!"
 
 

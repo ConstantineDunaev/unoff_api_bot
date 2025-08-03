@@ -1,4 +1,4 @@
-from mysql import MySQLPool
+from mysql import MySQLPool, Connection
 from config import Config
 from contextlib import asynccontextmanager
 
@@ -13,16 +13,14 @@ db_pool = MySQLPool(
 
 @asynccontextmanager
 async def connection_context():
-    """Контекстный менеджер для скриптов"""
-    await db_pool.init_pool()
-    conn = await db_pool.acquire()
-    try:
-        yield conn
-    finally:
-        await db_pool.release(conn)
+    async with db_pool:
+        conn = await db_pool.acquire()
+        try:
+            yield conn
+        finally:
+            await db_pool.release(conn)
 
 
 async def get_connection():
-    """Dependency для FastAPI"""
     async with connection_context() as conn:
         yield conn

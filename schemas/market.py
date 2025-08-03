@@ -1,5 +1,17 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict, astuple
 from datetime import datetime
+
+
+@dataclass
+class NewMarket:
+    name: str
+    headers: str
+    cookies: str
+    is_active: bool
+    updated_at: datetime
+
+    def as_tuple(self) -> tuple:
+        return astuple(self)
 
 
 @dataclass
@@ -9,4 +21,18 @@ class Market:
     headers: dict
     cookies: dict
     is_active: bool
-    updatet_at: datetime
+    updated_at: datetime
+
+    def as_dict(self) -> dict:
+        return asdict(self)
+
+
+
+@dataclass
+class UpdateMarket:
+    market_id: int
+    name: str
+    headers: dict
+    cookies: dict
+    is_active: bool
+    updated_at: datetime

@@ -18,7 +18,7 @@ class JobRepository:
                        params=new_job.params)
 
     async def finish_job(self, job: Job):
-        query = "UPDATE t_job SET finish = %s WHERE job_id = %s"
-        values = (job.finish, job.job_id)
+        query = "UPDATE t_job SET finish = %s, result = %s WHERE job_id = %s"
+        values = (job.finish, job.result, job.job_id)
         async with self.connection.cursor() as cursor:
             await cursor.execute(query, values)

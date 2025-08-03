@@ -18,6 +18,7 @@ class Job:
     start: datetime
     script_name: str
     params: Optional[str] = None
+    result: Optional[str] = None
     finish: Optional[datetime] = None
 
 

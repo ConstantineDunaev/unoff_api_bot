@@ -1,7 +1,6 @@
 from json import loads, dumps
 from aiohttp import ClientSession
 
-
 def parse_cookies(raw_cookies: str):
     cookies = {}
     for item in raw_cookies.split(';'):
@@ -30,7 +29,6 @@ def parse_curl(raw_curl: str):
                 cookies = parse_cookies(first_part)
 
     return headers, cookies
-
 
 async def main():
     with open('curl.txt', encoding='utf-8') as f:

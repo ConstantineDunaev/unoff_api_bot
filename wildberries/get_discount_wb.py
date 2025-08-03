@@ -25,10 +25,8 @@ async def get_discount_wb(headers: dict, cookies: dict) -> List[DiscountWB]:
             response = await session.post(url=url,
                                           data=dumps(data))
             data = await response.json()
-
             goods = data['data']['listGoods']
             for good in goods:
-
                 result.append(
                     DiscountWB(nm_id=good.get('nmID'),
                                vendor_code=good.get('vendorCode'),

@@ -1,0 +1,18 @@
+curl 'https://discounts-prices.wildberries.ru/ns/dp-api/discounts-prices/suppliers/api/v1/list/goods/filter' \
+  -H 'accept: */*' \
+  -H 'accept-language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7' \
+  -H 'authorizev3: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NTM4NTI2NzEsInVzZXIiOiIyMzY4NDMxOCIsInNoYXJkX2tleSI6IjIiLCJjbGllbnRfaWQiOiJzZWxsZXItcG9ydGFsIiwic2Vzc2lvbl9pZCI6IjAzNjBkZjg5NGQ0MDRkZmE5MDFhZTFkZjRlNzhhM2Y0IiwidmFsaWRhdGlvbl9rZXkiOiI0ODhiYTZhY2E2Yzg3N2EzYzQ5MDMxNDljNzVlMGI1MmQzNGY2YjdkNmI4NzE3ZTIxNTVkYzAxNjBhNjdjM2UzIiwidXNlcl9yZWdpc3RyYXRpb25fZHQiOjE2NzQ4OTE1NDYsInZlcnNpb24iOjJ9.QJ3NVV87ILVnOgBHkb1CDN6uBqi7fjGFqaTo118kne3RNBi25AiMSEUdHhRovwDYUuIeeXjCwHkrchmRVJvaJtTckfyRgkdSrwk5Gt25lM-NoYIIIpWdtxknZFTkGG_fF5kQaHdQr0ezDZo-Rv9GC27TPTs49_pO-zIew4Bq82FeazgUmosE4dHsPVMfRBfl64VX7ymUeboaf3yEilBeS2R5c-MW3GfdIlimcrSYJfTdryXnnuOmTiZfgX-rMg9UGP1-KmoUw6KTP-7JLbwO41vQOwcXupzqjApnXKY4ckk9q3wh1ZEODhyRFTAHfMS0_CzON9-Xl6HdUfBI6fEGNA' \
+  -H 'content-type: application/json' \
+  -b '_wbauid=10114848001739972027; external-locale=ru; wbx-validation-key=8073d079-e271-4044-87df-7a28ea809daf; x-supplier-id-external=038fa579-9029-59de-bb1f-717b0db92c23' \
+  -H 'origin: https://seller.wildberries.ru' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://seller.wildberries.ru/' \
+  -H 'root-version: v1.49.1' \
+  -H 'sec-ch-ua: "Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36' \
+  --data-raw '{"limit":50,"offset":0,"facets":[],"filterWithoutPrice":false,"filterWithLeftovers":false,"sort":"price","sortOrder":0}'

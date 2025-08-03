@@ -11,7 +11,6 @@ class DiscountWBRepository:
         query = ("INSERT INTO u_discount_wb (nm_id, vendor_code, discount_on_site, job_id) "
                  "VALUES (%s, %s, %s, %s)")
         values = [row.as_tuple() for row in rows]
-        print(values)
         async with self.connection.cursor() as cursor:
             await cursor.executemany(query, values)
 

@@ -38,3 +38,5 @@ async def run_script(connection: Connection, bot: Bot, func: Callable, caption: 
             await bot.send_message(chat_id=user_id,
                                    text=text)
 
+
+

@@ -28,6 +28,7 @@ python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 chmod +x create_service.sh
+./create_service.sh
 ```
 
 ### Управление процессом systemd

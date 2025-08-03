@@ -1,8 +1,9 @@
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
-from mysql import MySQLPool
+from db import init_database
 from .handlers import routers
 from .middlewares import UpdateMiddleware
+from config import Config
 
 
 async def create_bot(token: str) -> Bot:
@@ -15,6 +16,7 @@ async def create_bot(token: str) -> Bot:
 
 
 async def start_bot(bot: Bot):
+    await init_database(Config.MYSQL_DUMP)
     dp = Dispatcher()
     dp.include_routers(*routers)
     dp.update.outer_middleware(UpdateMiddleware())

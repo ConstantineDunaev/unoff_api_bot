@@ -13,4 +13,4 @@ class Config:
     MYSQL_PASSWORD = getenv('MYSQL_PASSWORD')
     MYSQL_PORT = int(getenv('MYSQL_PORT'))
     MYSQL_SCHEMA = getenv('MYSQL_SCHEMA')
-    MYSQL_POOL_SIZE = int(getenv('MYSQL_POOL_SIZE'))
+    MYSQL_DUMP = getenv('MYSQL_DUMP')

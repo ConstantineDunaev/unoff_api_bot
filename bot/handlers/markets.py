@@ -13,6 +13,7 @@ from enums import MarketAction
 from utils.curl import parse_curl
 from datetime import datetime
 from schemas.market import NewMarket, UpdateMarket, GetMarket
+from datetime import datetime
 
 markets_router = Router()
 markets_router.message.filter(IsAdmin())
@@ -123,7 +124,7 @@ async def update_market_handler(message: Message, state: FSMContext, connection:
                               headers=headers,
                               cookies=cookies,
                               is_active=market.is_active,
-                              updated_at=market.updated_at)
+                              updated_at=datetime.now())
 
     market = await update_market(connection=connection,
                                  upd_market=upd_market)

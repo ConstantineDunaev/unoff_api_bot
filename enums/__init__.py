@@ -1,10 +1,10 @@
-from enum import StrEnum
+from enum import StrEnum, auto
 
 
 class MarketAction(StrEnum):
-    update = "update"
+    update = auto()
 
 
 class Scripts(StrEnum):
-    discount_wb = "discount_wb"
-    ...
+    discount_wb = auto()
+    supplies_wb = auto()

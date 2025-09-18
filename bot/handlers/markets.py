@@ -11,7 +11,6 @@ from services.market import get_markets, create_market, update_market, get_marke
 from bot.callback_factory import MarketControl
 from enums import MarketAction
 from utils.curl import parse_curl
-from datetime import datetime
 from schemas.market import NewMarket, UpdateMarket, GetMarket
 from datetime import datetime
 

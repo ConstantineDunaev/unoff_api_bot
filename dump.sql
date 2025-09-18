@@ -29,3 +29,18 @@ CREATE TABLE IF NOT EXISTS `u_discount_wb` (
   KEY `u_discount_wb_t_job_FK` (`job_id`),
   CONSTRAINT `u_discount_wb_t_job_FK` FOREIGN KEY (`job_id`) REFERENCES `t_job` (`job_id`)
 );
+CREATE TABLE IF NOT EXISTS `u_supply_wb` (
+    `job_id` bigint NOT NULL,
+    `supply_id` bigint NOT NULL,
+    `supply_date` DATETIME NOT NULL,
+    `fact_date` DATETIME NOT NULL,
+    `barcode` VARCHAR(100) NOT NULL,
+    `sa` TEXT NOT NULL,
+    `quantity` INT NOT NULL,
+    `unloading_quantity` INT NOT NULL,
+    `ready_for_sale_quantity` INT NOT NULL,
+    `income_quantity` INT NOT NULL,
+    `nm_id` INT NOT NULL,
+    `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`supply_id`, `barcode`, `nm_id`)
+);

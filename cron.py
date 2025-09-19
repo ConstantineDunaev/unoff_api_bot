@@ -7,6 +7,7 @@ from aiogram.client.default import DefaultBotProperties
 from sys import argv
 from asyncio import run
 from utils.script import run_script
+from logging import basicConfig, DEBUG
 
 
 async def main():
@@ -32,4 +33,6 @@ async def main():
 
 
 if __name__ == '__main__':
+    basicConfig(format="%(asctime)s - %(name)s: %(message)s",
+                level=DEBUG)
     run(main())

@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `u_supply_wb` (
     `job_id` bigint NOT NULL,
     `supply_id` bigint NOT NULL,
     `supply_date` DATETIME NOT NULL,
-    `fact_date` DATETIME NOT NULL,
+    `fact_date` DATETIME,
     `barcode` VARCHAR(100) NOT NULL,
     `sa` TEXT NOT NULL,
     `quantity` INT NOT NULL,

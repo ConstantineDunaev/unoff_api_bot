@@ -6,20 +6,23 @@ from schemas.supply_wb import RowSupplyDetailWB
 from mysql import Connection
 from logging import getLogger
 from traceback import format_exc
-from datetime import datetime, timedelta
+from datetime import date, datetime
+from dateutil.relativedelta import relativedelta
+
 
 logger = getLogger('SUPPLIES_WB')
 
 
 async def process_supplies_wb(job: Job, connection: Connection, headers: dict, cookies: dict) -> Job:
     logger.info("START PROCECESSING JOB_ID = %d", job.job_id)
-    min_supply_date = datetime.now() - timedelta(days=30)
+    min_supply_date = date.today() - relativedelta(months=1)
+    logger.debug("min_supply_date = %s", min_supply_date)
     supply_wb_repo = SupplyWBRepository(connection)
     result = []
     try:
         items = await get_supplies_wb(headers=headers,
                                       cookies=cookies)
-        supplies = [item for item in items if item.supply_date > min_supply_date]
+        supplies = [item for item in items if item.supply_date.date() >= min_supply_date]
         for supply in supplies:
             supply_details = await get_supply_details_wb(headers=headers,
                                                          cookies=cookies,

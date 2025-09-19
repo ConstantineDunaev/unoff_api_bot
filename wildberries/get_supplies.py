@@ -35,7 +35,7 @@ async def get_supplies_wb(headers: dict, cookies: dict) -> List[SupplyWB]:
             supply_id = item.get('supplyId')
             supply_date = item.get('supplyDate')
             fact_date = item.get('factDate')
-            if supply_id and supply_date and fact_date:
+            if supply_id and supply_date:
                 result.append(
                     SupplyWB(
                         supply_id=supply_id,

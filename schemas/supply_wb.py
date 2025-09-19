@@ -10,9 +10,9 @@ class SupplyWB:
 
     def __post_init__(self):
         if isinstance(self.supply_date, str):
-            self.supply_date = datetime.fromisoformat(self.supply_date).astimezone(timezone.utc).replace(tzinfo=None)
+            self.supply_date = datetime.fromisoformat(self.supply_date).replace(tzinfo=None)
         if isinstance(self.fact_date, str):
-            self.fact_date = datetime.fromisoformat(self.fact_date).astimezone(timezone.utc).replace(tzinfo=None)
+            self.fact_date = datetime.fromisoformat(self.fact_date).replace(tzinfo=None)
 
     def as_dict(self) -> dict:
         return asdict(self)

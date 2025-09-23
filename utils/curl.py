@@ -4,10 +4,10 @@ from json import dumps
 def parse_cookies(raw_cookies: str):
     cookies = {}
     for item in raw_cookies.split(';'):
-        pair = item.split('=')
-        first_part = pair[0] if pair[0] else None
-        second_part = pair[1] if len(pair) == 2 else None
-        cookies[first_part.strip()] = second_part.strip()
+        index_separator = item.find('=')
+        key = item[:index_separator].strip()
+        value = item[index_separator + 1:].strip()
+        cookies[key] = value
     return cookies
 
 

@@ -1,5 +1,5 @@
-from datetime import datetime, timezone
-from dataclasses import dataclass, astuple, asdict
+from datetime import datetime
+from dataclasses import dataclass, asdict
 
 
 @dataclass

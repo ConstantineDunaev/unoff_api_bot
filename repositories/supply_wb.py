@@ -26,4 +26,17 @@ class SupplyWBRepository:
         values = [row.as_tuple() for row in rows]
         async with self.connection.cursor() as cursor:
             await cursor.executemany(query, values)
-
+            
+    async def delete_old_rows(self, script_name: str, market_id: int):
+        query = """
+        DELETE FROM u_supply_wb WHERE job_id IN (
+            SELECT job_id 
+            FROM t_job tj 
+            WHERE market_id = %s
+            AND script = %s
+            ORDER BY job_id DESC 
+            LIMIT 10000 OFFSET 1
+        )
+        """
+        async with self.connection.cursor() as cursor:
+            await cursor.executemany(query, (market_id, script_name))

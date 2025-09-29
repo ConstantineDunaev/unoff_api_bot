@@ -2,6 +2,7 @@ from repositories.supply_wb import SupplyWBRepository
 from wildberries.get_supplies import get_supplies_wb
 from wildberries.get_supply_details import get_supply_details_wb
 from schemas.job import Job
+from schemas.market import Market
 from schemas.supply_wb import RowSupplyDetailWB
 from mysql import Connection
 from logging import getLogger
@@ -13,7 +14,7 @@ from dateutil.relativedelta import relativedelta
 logger = getLogger('SUPPLIES_WB')
 
 
-async def process_supplies_wb(job: Job, connection: Connection, headers: dict, cookies: dict) -> Job:
+async def process_supplies_wb(job: Job, market: Market, connection: Connection, headers: dict, cookies: dict) -> Job:
     logger.info("START PROCECESSING JOB_ID = %d", job.job_id)
     min_supply_date = date.today() - relativedelta(months=1)
     logger.debug("min_supply_date = %s", min_supply_date)
@@ -31,6 +32,8 @@ async def process_supplies_wb(job: Job, connection: Connection, headers: dict, c
                                          **detail.as_dict(),
                                          **supply.as_dict()) for detail in supply_details]
         await supply_wb_repo.write_rows(result)
+        await supply_wb_repo.delete_old_rows(script_name=job.script_name,
+                                             market_id=market.market_id)
         logger.info("SUCCESS JOB_ID = %d", job.job_id)
         job.result = 'OK'
     except Exception as e:

@@ -1,6 +1,7 @@
 from repositories.discount_wb import DiscountWBRepository
 from wildberries.get_discount_wb import get_discount_wb
 from schemas.job import Job
+from schemas.market import Market
 from schemas.discount_wb import RowDiscountWB
 from mysql import Connection
 from logging import getLogger
@@ -10,7 +11,7 @@ from datetime import datetime
 logger = getLogger('DISCOUNT_WB')
 
 
-async def process_discount_wb(job: Job, connection: Connection, headers: dict, cookies: dict) -> Job:
+async def process_discount_wb(job: Job, market: Market, connection: Connection, headers: dict, cookies: dict) -> Job:
     logger.info("START PROCECESSING JOB_ID = %d", job.job_id)
     discount_wb_repo = DiscountWBRepository(connection)
     try:

@@ -24,6 +24,7 @@ async def run_script(connection: Connection, bot: Bot, func: Callable, caption: 
             finished_job = await func(connection=connection,
                                       headers=market.headers,
                                       cookies=market.cookies,
+                                      market=market,
                                       job=job)
             await job_repo.finish_job(finished_job)
             text = Texts.market_result.format(market_name=market.name,

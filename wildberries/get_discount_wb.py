@@ -9,7 +9,7 @@ async def get_discount_wb(headers: dict, cookies: dict) -> List[DiscountWB]:
     result = []
     limit = 1000
     offset = 0
-    data = {
+    payload = {
         "limit": limit,
         "offset": 0,
         "facets": [],
@@ -22,12 +22,11 @@ async def get_discount_wb(headers: dict, cookies: dict) -> List[DiscountWB]:
     async with ClientSession(headers=headers,
                              cookies=cookies) as session:
         while True:
-            data["offset"] = offset
+            payload["offset"] = offset
             response = await session.post(url=url,
-                                          data=dumps(data))
+                                          data=dumps(payload))
             if response.status == 401:
                 raise RuntimeError(Texts.error_401)
-
             data = await response.json()
             goods = data['data']['listGoods']
             for good in goods:
